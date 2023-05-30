@@ -30,7 +30,7 @@ app.get('/todos', (req, res) =>{
 app.post('/todos', (req, res) => {
     const newTodo =req.body.todo;
     // INGEN escaping eller validering af input. MEGET usikker.
-    const query = `INSERT INTO todos (text) VALUES ('${newTodo}')`;
+    const query = `INSERT INTO todos (text) VALUES (?)`;
     db.query(query, (err, result) => {
         if (err) throw err;
         res.json(result);
